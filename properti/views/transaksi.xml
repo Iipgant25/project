@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- properti.transaksi tree view -->
+    <record id="pinjam_sewa_view_tree" model="ir.ui.view">
+        <field name="name">Pembelian Assets</field>
+        <field name="model">properti.transaksi</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="konsumen_id"/>
+                <field name="assets_id"/>
+                <field name="kode"/>
+                <field name="tgl_transaksi"/>
+                <field name="harga"/>
+                <field name="state" widget="badge" 
+                decoration-info="state == 'confirm'"
+                decoration-danger="state == 'cancelled'"
+                decoration-success="state == 'done'"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- properti.transaksi form view -->
+    <record id="properti_transaksi_view_form" model="ir.ui.view">
+        <field name="name">Form Pembelian</field>
+        <field name="model">properti.transaksi</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn btn-primary" states="draft"/>
+                    <button name="action_done" type="object" string="Done" class="btn btn-primary" states="confirm"/>
+                    <button name="action_cancel" type="object" string="Cancel" class="btn btn-secodary" states="confirm" confirm="Anda yakin meng-cancel Transaksi ini?"/>
+                    <button name="action_draft" type="object" string="Back To Draft" class="btn btn-warning" states="cancelled" confirm="Anda yakin untuk mengedit Transaksi ini?"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                </header>
+                <sheet>
+                    <group name="fsa" string="Form Pembelian Assets">
+                        <field name="name" required="1" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                        <field name="konsumen_id" required="1" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                        <field name="assets_id" required="1" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                    </group>
+                    <group name="detail" string="Detail">
+                        <field name="tgl_transaksi"/>
+                        <field name="harga"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- properti.transaksi action window -->
+    <record id="properti_transaksi_action" model="ir.actions.act_window">
+        <field name="name">Pembelian Assets</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">properti.transaksi</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="transaksi_pembelian_menu_act" 
+              name="Transaksi" 
+              parent="properti_menu_root" 
+              action="properti_transaksi_action" 
+              sequence="30"/>
+
+</odoo>

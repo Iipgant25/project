@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_transaksi_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+<!--                <t t-call="web.external_layout">-->
+                <div class="page">
+                    <h1>DAFTAR PENJUALAN</h1>
+                    <t t-foreach="docs" t-as="d">
+                        <div class="row">
+                            <div class="col-4">Kode Transaksi    :</div>
+                            <div class="col-8"><span t-field="d.name"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Nama        :</div>
+                            <div class="col-8"><span t-field="d.konsumen_id"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Tanggal Transaksi :</div>
+                            <div class="col-8"><span t-field="d.tgl_transaksi"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Harga Assets Rp   :</div>
+                            <div class="col-8"><span t-field="d.harga"/></div>
+                        </div><br></br><hr></hr>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="report_properti_transaksi_xlsx" model="ir.actions.report">
+        <field name="name">Daftar Penjualan Excel</field>
+        <field name="model">properti.transaksi</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">properti.report_properti_transaksi_xlsx</field>
+        <field name="report_file">properti.report_properti_transaksi_xlsx</field>
+        <field name="binding_model_id" ref="model_properti_transaksi"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <record id="report_properti_assets_xlsx" model="ir.actions.report">
+        <field name="name">Daftar Assets Excel</field>
+        <field name="model">properti.assets</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">properti.report_properti_assets_xlsx</field>
+        <field name="report_file">properti.report_properti_assets_xlsx</field>
+        <field name="binding_model_id" ref="model_properti_assets"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <record id="report_transaksi_pdf" model="ir.actions.report">
+        <field name="name">Daftar Penjualan PDF</field>
+        <field name="model">properti.transaksi</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">properti.report_transaksi_pdf</field>
+        <field name="report_file">properti.report_transaksi_pdf</field>
+        <field name="binding_model_id" ref="model_properti_transaksi"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_assets_pdf" model="ir.actions.report">
+        <field name="name">Daftar Assets PDF</field>
+        <field name="model">properti.assets</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">properti.report_assets_pdf</field>
+        <field name="report_file">properti.report_assets_pdf</field>
+        <field name="binding_model_id" ref="model_properti_assets"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="wizzard_penjualanreport_pdf" model="ir.actions.report">
+        <field name="name">Print Report</field>
+        <field name="model">properti.penjualanreport</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">properti.wizzard_penjualanreport_pdf_tmp</field>
+        <field name="report_file">properti.wizzard_penjualanreport_pdf_tmp</field>
+        <field name="binding_model_id" ref="model_properti_penjualanreport"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- properti.assets tree view -->
+    <record id="properti_assets_view_tree" model="ir.ui.view">
+        <field name="name">Assets</field>
+        <field name="model">properti.assets</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="kode_assets"/>
+                <field name="lokasi"/>
+                <field name="luas_assets"/>
+                <field name="pemilik"/>
+                <field name="asset" widget="badge" 
+                decoration-info="asset == 'Belum Di Beli'"
+                decoration-success="asset == 'Di Beli'"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <!-- properti.assets form view -->
+    <record id="pinjam_assets_view_form" model="ir.ui.view">
+        <field name="name">Form Assets</field>
+        <field name="model">properti.assets</field>
+        <field name="arch" type="xml">
+            <form string="Form Assets">
+                <sheet>
+                    <group name="dataassets" string="Data Assets">
+                        <field name="type"/>
+                        <field name="kode_assets"/>
+                        <field name="name"/>
+                        <field name="pemilik"/>
+                        <field name="alamat"/>
+                    </group>
+                    <group name="detail" string="Detail">
+                        <field name="lokasi"/>
+                        <field name="luas_assets"/>
+                        <field name="harga_assets"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pinjaman_assets_view_kanban" model="ir.ui.view">
+        <field name="name">properti_assets.view.kanban</field>
+        <field name="model">properti.assets</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_res_partner_kanban">
+                <field name="name"/>
+                <field name="lokasi"/>
+                <field name="asset"/>
+                <field name="harga_assets"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_tittle">
+                                    <div class="row mb4">
+                                        <div class="col-6">
+                                            <strong><span><field name="name" on_change="1" modifiers="{}"/></span></strong>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <strong><field name="asset"/></strong>
+                                        </div>
+                                    </div>
+                                </strong>
+                                <div style="margin-top:10px;">
+                                    <field name="lokasi"/>
+                                </div>
+                                <div>
+                                    <field name="harga_assets"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- properti.assets search view -->
+    <record id="pinjam_assets_view_search" model="ir.ui.view">
+        <field name="name">Belum Di Sewa</field>
+        <field name="model">properti.assets</field>
+        <field name="arch" type="xml">
+            <search string="Asset Free">
+                <field name="name"/>
+                <field name="pemilik"/>
+                <field name="asset"/>
+                <field name="kode_assets"/>
+                <field name="lokasi"/>
+                <field name="luas_assets"/>
+                <filter name="assets" string="Assets Free" domain="[('asset', '=', 'Belum Di Beli')]"/>
+                <filter name="disewa" string="Assets Dibeli" domain="[('asset', '=', 'Di Beli')]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- properti.assets action window -->
+    <record id="properti_assets_action" model="ir.actions.act_window">
+        <field name="name">Data Assets</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">properti.assets</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">
+            {
+                'default_asset':'Belum Di Beli'
+            }
+        </field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="properti_assets_menu_act" 
+              name="Data Assets" 
+              parent="properti_menu_root" 
+              action="properti_assets_action" 
+              sequence="20"/>
+
+</odoo>
