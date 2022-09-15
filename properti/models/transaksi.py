@@ -14,7 +14,7 @@ class Transaksi(models.Model):
     assets_id = fields.Many2one(comodel_name='properti.assets', string='Data Assets', domain=[('asset', '=', 'Belum Di Beli')])
     tgl_transaksi = fields.Date(string='Tanggal Transaksi', default = fields.Datetime.now(), readonly=True)
 
-    harga = fields.Char(compute='_compute_asset', string='Harga Assets', readonly=True)
+    harga = fields.Integer(compute='_compute_asset', string='Harga Assets', readonly=True)
     kode = fields.Char(compute='_compute_asset', string='Kode Assets')
     
     state = fields.Selection(
@@ -31,7 +31,7 @@ class Transaksi(models.Model):
 
     def action_done(self):       
         self.write({'state': 'done'})
-
+        
     def action_cancel(self):
         self.write({'state': 'cancelled'})
 
@@ -43,7 +43,7 @@ class Transaksi(models.Model):
     def _compute_asset(self):
         for record in self:
             a = self.env['properti.assets'].search([('id', '=', record.assets_id.id)])
-            record.harga = a.harga_assets
+            record.harga = int(a.harga_assets)
             record.kode = a.kode_assets
             
     @api.model
