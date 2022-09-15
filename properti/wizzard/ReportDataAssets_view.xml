@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="reportdataassets_wizzard_view_form" model="ir.ui.view">
+        <field name="name">Form Report Data Assets</field>
+        <field name="model">properti.assetsreport</field>
+        <field name="arch" type="xml">
+            <form string="reportdataassets_wizzard_form">
+                <group>
+                    <field name="status_pembelian"/>
+                </group>
+                <footer>
+                    <button name="action_assets_report" type="object" string="Print Report" class="btn btn-primary"/>
+                    <button special="cancel" string="Cancel" class="btn btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+   <record id="reportdataassets_wizzard_action" model="ir.actions.act_window">
+       <field name="name">Report Data Assets</field>
+       <field name="type">ir.actions.act_window</field>
+       <field name="res_model">properti.assetsreport</field>
+       <field name="view_mode">form</field>
+       <field name="view_id" ref="reportdataassets_wizzard_view_form"/>
+       <field name="target">new</field>
+   </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="reportdataassets_wizzard_menu_action"
+              name="Report Data Assets"
+              parent="report_menu_categ"
+              action="reportdataassets_wizzard_action"
+              sequence="20"/>
+</odoo>

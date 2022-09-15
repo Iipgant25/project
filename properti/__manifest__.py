@@ -34,8 +34,10 @@
         'report/report.xml',
         'report/PenjualanPdf.xml',
         'report/Assets_pdf.xml',
+        'report/assetsreport_template.xml',
         'report/penjualanreport_template.xml',
-        'wizzard/penjualanreport.xml'
+        'wizzard/penjualanreport.xml',
+        'wizzard/ReportDataAssets_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

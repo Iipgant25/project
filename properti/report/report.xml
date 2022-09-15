@@ -53,5 +53,15 @@
         <field name="binding_type">report</field>
     </record>
 
+    <record id="wizzard_assetsreport_pdf" model="ir.actions.report">
+        <field name="name">Print Report Data Assets</field>
+        <field name="model">properti.assetsreport</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">properti.wizzard_assetsreport_pdf_tmp</field>
+        <field name="report_file">properti.wizzard_assetsreport_pdf_tmp</field>
+        <field name="binding_model_id" ref="model_properti_assetsreport"/>
+        <field name="binding_type">report</field>
+    </record>
+
 
 </odoo>

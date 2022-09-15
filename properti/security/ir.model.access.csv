@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_properti_assets,access.properti.assets,model_properti_assets,,1,1,1,1
 access_properti_transaksi,access.properti.transaksi,model_properti_transaksi,,1,1,1,1
 access_properti_penjualanreport,access.properti_penjualanreport,model_properti_penjualanreport,,1,1,1,1
+access_properti_assetsreport,access.properti.assetsreport,model_properti_assetsreport,,1,1,1,1

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="wizzard_assetsreport_pdf_tmp">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+<!--                <t t-call="web.external_layout">-->
+                <div class="page">
+                    <center><h1>DATA ASSETS</h1></center>
+                     <div class="row">
+                            <div class="col-4">Status    :</div>
+                            <div class="col-8">
+                                <t t-esc="form['status_pembelian']"/>
+                            </div>
+                        </div><br></br>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span>Nama Assets</span>
+                                    </th>
+                                    <th>
+                                        <span>Kode Assets</span>
+                                    </th>
+                                    <th>
+                                        <span>Lokasi</span>
+                                    </th>
+                                    <th>
+                                        <span>Pemilik</span>
+                                    </th>
+                                    <th>
+                                        <span>Harga</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="penjualan" t-as="line">
+                                <tr>
+                                    <td>
+                                        <span t-esc="line['name']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="line['kode_assets']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="line['lokasi']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="line['pemilik']"/>
+                                    </td>
+                                    <td>
+                                        Rp. <span t-esc="line['harga_assets']"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                        </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
